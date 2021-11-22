@@ -10,7 +10,6 @@ int main(void)
 	void *img_ptr3;  // 이미지를 저장할 포인터
 	void *img_ptr4;  // 이미지를 저장할 포인터
 	void *img_ptr5;  // 이미지를 저장할 포인터
-	void *img_ptr6;  // 이미지를 저장할 포인터
 	
     
     
@@ -19,15 +18,11 @@ int main(void)
 
 	mlx_ptr = mlx_init();
 	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "load image!");
-	img_ptr = mlx_xpm_file_to_image(mlx_ptr, "./img/WALL.xpm", &width, &height);
-    img_ptr2 = mlx_xpm_file_to_image(mlx_ptr, "./img/GROUND.xpm", &width, &height);
-    
-	img_ptr3 = mlx_xpm_file_to_image(mlx_ptr, "./img/RenewApple.xpm", &width, &height);
-    
-    img_ptr4 = mlx_xpm_file_to_image(mlx_ptr, "./img/GoraFinalat.xpm", &width, &height);
-    
-	img_ptr5 = mlx_xpm_file_to_image(mlx_ptr, "./img/WATER.xpm", &width, &height);
-    img_ptr6 = mlx_xpm_file_to_image(mlx_ptr, "./img/image.xpm", &width, &height);
+	img_ptr = mlx_xpm_file_to_image(mlx_ptr, "./img/Wall.xpm", &width, &height);
+    img_ptr2 = mlx_xpm_file_to_image(mlx_ptr, "./img/Ground.xpm", &width, &height);
+	img_ptr3 = mlx_xpm_file_to_image(mlx_ptr, "./img/Apple.xpm", &width, &height);
+    img_ptr4 = mlx_xpm_file_to_image(mlx_ptr, "./img/Goraphaduck.xpm", &width, &height);
+	img_ptr5 = mlx_xpm_file_to_image(mlx_ptr, "./img/Water.xpm", &width, &height);
     
 	
     
@@ -49,7 +44,6 @@ int main(void)
     
     mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr2,  loop * 64, 64);
     mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr5, loop++ * 64, 64);
-    mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr6, loop++ * 64, 64);
     
     loop++;
     
