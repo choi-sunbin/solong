@@ -6,19 +6,19 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 18:10:49 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/23 16:46:02 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/23 17:54:24 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void read_map(char* argv[], t_data* data)
+void	read_map(char *argv[], t_data *data)
 {
 	int		fd;
 	int		loop;
 	char	*line;
 
-	data->map_data.y_len =0;
+	data->map_data.y_len = 0;
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		error("Map not found");
@@ -39,19 +39,19 @@ void read_map(char* argv[], t_data* data)
 	close(fd);
 }
 
-void read_img(t_data *data)
+void	read_img(t_data *data)
 {
-	int width;
-	int height;
-	
-	data->img.wall = mlx_xpm_file_to_image(data->mlx, "./img/Wall.xpm", &width, &height);
-    data->img.ground = mlx_xpm_file_to_image(data->mlx, "./img/Ground.xpm", &width, &height);
-	data->img.item = mlx_xpm_file_to_image(data->mlx, "./img/Apple.xpm", &width, &height);
-    data->img.point = mlx_xpm_file_to_image(data->mlx, "./img/Goraphaduck.xpm", &width, &height);
-	data->img.exit = mlx_xpm_file_to_image(data->mlx, "./img/Water.xpm", &width, &height);
+	int	w;
+	int	h;
+
+	data->img.wall = mlx_xpm_file_to_image(data->mlx, "./img/Wall.xpm", &w, &h);
+	data->img.ground = mlx_xpm_file_to_image(data->mlx, "./img/Ground.xpm", &w, &h);
+	data->img.item = mlx_xpm_file_to_image(data->mlx, "./img/Apple.xpm", &w, &h);
+	data->img.point = mlx_xpm_file_to_image(data->mlx, "./img/Goraphaduck.xpm", &w, &h);
+	data->img.exit = mlx_xpm_file_to_image(data->mlx, "./img/Water.xpm", &w, &h);
 }
 
-void read_game(t_data *data)
+void	read_game(t_data *data)
 {
 	int		loop_x;
 	int		loop_y;
@@ -67,15 +67,15 @@ void read_game(t_data *data)
 			key = data->map_data.map_mtrix[loop_y][loop_x];
 			if (key == 'C')
 				data->map_data.game_data.item_cnt++;
-			else if(key == 'P')
+			else if (key == 'P')
 			{
 				data->map_data.game_data.point_cnt++;
 				data->map_data.game_data.pos_data.x = loop_x;
 				data->map_data.game_data.pos_data.y = loop_y;
 			}
-			else if(key == 'E')
+			else if (key == 'E')
 				data->map_data.game_data.exit_cnt++;
-			else if(key == '0' || key== '1')
+			else if (key == '0' || key == '1')
 			{	
 				loop_x++;
 				continue ;
@@ -88,10 +88,10 @@ void read_game(t_data *data)
 	}
 }
 
-void initialize_data(char* argv[], t_data *data)
+void	initialize_data(char *argv[], t_data *data)
 {
-    data->mlx = mlx_init();
-    read_map(argv, data);
+	data->mlx = mlx_init();
+	read_map(argv, data);
 	read_game(data);
-    read_img(data);
+	read_img(data);
 }

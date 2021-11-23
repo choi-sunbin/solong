@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 13:32:29 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/23 16:37:58 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/23 18:59:22 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 # define X_EVENT_KEY_PRESS 2     // mlx_hook 함수의 두 번째 인자인 
 # define X_EVENT_KEY_RELEASE 3   // x_event에 들어가는 값
+# define X_EVENT_KEY_EXIT 17
 # define KEY_W 13    // MacOS의 키보드 코드들이다.          
 # define KEY_A 0     //
 # define KEY_S 1     // 위에서 부터 차례대로
@@ -73,6 +74,7 @@ typedef struct s_data
 void print_map(t_data *data);
 int	error(char *msg);
 void initialize_data(char* argv[], t_data *data);
+int	check_map(t_data *data);
 int key_press(int keycode, t_data *data); // 어떤 키가 눌렸는지 판단하고,
 
 
