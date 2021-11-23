@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 17:55:10 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/22 18:08:09 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/23 14:54:35 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,25 @@ void *select_img(char cur, t_data *data)
 
 void print_map(t_data *data)
 {
-	int     loop;
-	int     loop2;
+	int     loop_x;
+	int     loop_y;
 	char    cur;
     void    *img;
 	
-	loop = 0;
-	loop2 = 0;
-	while (loop2 < data->map_data.y_len)
+	loop_x = 0;
+	loop_y = 0;
+	while (loop_y < data->map_data.y_len)
 	{
-		loop = 0;
-		while (loop < data->map_data.x_len)
+		loop_x = 0;
+		while (loop_x < data->map_data.x_len)
 		{
-			cur = data->map_data.map_mtrix[loop2][loop];
+			cur = data->map_data.map_mtrix[loop_y][loop_x];
 			img = select_img(cur, data);
             if (img == data->img.point || img == data->img.item)          
-			    mlx_put_image_to_window(data->mlx, data->win, data->img.ground, loop * 64, loop2 * 64);
-			mlx_put_image_to_window(data->mlx, data->win, img, loop * 64, loop2 * 64);
-			loop++;
+			    mlx_put_image_to_window(data->mlx, data->win, data->img.ground, loop_x * 64, loop_y * 64);
+			mlx_put_image_to_window(data->mlx, data->win, img, loop_x * 64, loop_y * 64);
+			loop_x++;
 		}
-		loop2++;
+		loop_y++;
 	}
 }

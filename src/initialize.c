@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 18:10:49 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/22 18:15:44 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/23 16:46:02 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,47 @@ void read_img(t_data *data)
 	data->img.exit = mlx_xpm_file_to_image(data->mlx, "./img/Water.xpm", &width, &height);
 }
 
+void read_game(t_data *data)
+{
+	int		loop_x;
+	int		loop_y;
+	char	key;
+
+	loop_x = 0;
+	loop_y = 0;
+	while (loop_y < data->map_data.y_len)
+	{
+		loop_x = 0;
+		while (loop_x < data->map_data.x_len)
+		{
+			key = data->map_data.map_mtrix[loop_y][loop_x];
+			if (key == 'C')
+				data->map_data.game_data.item_cnt++;
+			else if(key == 'P')
+			{
+				data->map_data.game_data.point_cnt++;
+				data->map_data.game_data.pos_data.x = loop_x;
+				data->map_data.game_data.pos_data.y = loop_y;
+			}
+			else if(key == 'E')
+				data->map_data.game_data.exit_cnt++;
+			else if(key == '0' || key== '1')
+			{	
+				loop_x++;
+				continue ;
+			}
+			else
+				error("Wrong map Data\nPlease Check Map Data");
+			loop_x++;
+		}
+		loop_y++;
+	}
+}
+
 void initialize_data(char* argv[], t_data *data)
 {
     data->mlx = mlx_init();
     read_map(argv, data);
+	read_game(data);
     read_img(data);
 }
