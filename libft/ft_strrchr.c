@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunbchoi <sunbchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 22:54:32 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/01/02 17:46:17 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 21:23:24 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strrchr(const char *dest, int check)
 	while (1)
 	{
 		if (*dest == (char)check)
-			save_point = (char*)dest;
+			save_point = (char *)dest;
 		if (*dest == 0)
 			return (save_point);
 		dest++;

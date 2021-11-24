@@ -6,13 +6,13 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 01:02:14 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/22 15:33:37 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 21:19:51 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		new_line_check(char *s)
+int	new_line_check(char *s)
 {
 	int		loop;
 
@@ -40,7 +40,7 @@ char	*new_line_copy(char *s)
 		return (NULL);
 	while (s[len] != '\n' && s[len] != '\0')
 		len++;
-	str = (char*)malloc(sizeof(char) * (len + 1));
+	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (str == NULL)
 		return (NULL);
 	while (loop < len)
@@ -60,20 +60,18 @@ char	*fd_read(char **save_buf, int fd)
 	read_len = 1;
 	while (read_len > 0)
 	{
-		if (!(buf = (char*)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+		buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+		if (buf)
 		{
 			free(save_buf[fd]);
 			return (NULL);
 		}
 		read_len = read(fd, buf, BUFFER_SIZE);
 		if (read_len < 0)
-		{
-			free(buf);
-			free(save_buf[fd]);
-			return (NULL);
-		}
+			exit(EXIT_FAILURE);
 		buf[read_len] = 0;
-		if (!(save_buf[fd] = ft_strjoin_free(save_buf[fd], buf)))
+		save_buf[fd] = ft_strjoin_free(save_buf[fd], buf);
+		if (!(save_buf[fd]))
 			return (NULL);
 		if (new_line_check(save_buf[fd]))
 			break ;
@@ -81,7 +79,7 @@ char	*fd_read(char **save_buf, int fd)
 	return (save_buf[fd]);
 }
 
-int		gnl_make_line(char **save_buf, char **line, int fd)
+int	gnl_make_line(char **save_buf, char **line, int fd)
 {
 	int		loop;
 	char	*clear_buf;
@@ -91,7 +89,8 @@ int		gnl_make_line(char **save_buf, char **line, int fd)
 		loop++;
 	if (save_buf[fd][loop] == '\n')
 	{
-		if (!(*line = new_line_copy(save_buf[fd])))
+		*line = new_line_copy(save_buf[fd]);
+		if (!(*line))
 		{
 			free(save_buf[fd]);
 			return (-1);
@@ -109,7 +108,7 @@ int		gnl_make_line(char **save_buf, char **line, int fd)
 	return (0);
 }
 
-int		ft_gnl(int fd, char **line)
+int	ft_gnl(int fd, char **line)
 {
 	static char	*save_buf[OPEN_MAX];
 	int			result;

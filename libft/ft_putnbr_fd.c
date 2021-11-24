@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunbchoi <sunbchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 13:32:13 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/01/04 13:28:01 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 21:26:18 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	set_value_fd(char *temp_str, char *str, int len, int sign)
 {
-	int loop;
+	int	loop;
 
 	loop = 0;
 	if (sign == 1)

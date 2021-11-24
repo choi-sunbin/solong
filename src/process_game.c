@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:14:16 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/24 18:56:58 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 20:43:14 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,5 @@ int	key_press(int keycode, t_data *data)
 	print_draw_map(data);
 	if (flag != 0)
 		printf("STEP CNT[%d]\n", data->m_data.g_data.step_cnt++);
-	return (0);
+	return (SUCCESS);
 }

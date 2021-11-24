@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 18:10:49 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/24 19:03:17 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 20:42:49 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,26 @@ void	read_map(char *argv[], t_data *data)
 
 void	read_img(t_data *data)
 {
-	int	w;
-	int	h;
+	int		w;
+	int		h;
+	void	*mlx;
 
-	data->img.w = mlx_xpm_file_to_image(data->mlx, "./img/Wall.xpm", &w, &h);
-	data->img.g = mlx_xpm_file_to_image(data->mlx, "./img/Ground.xpm", &w, &h);
-	data->img.c = mlx_xpm_file_to_image(data->mlx, "./img/Apple.xpm", &w, &h);
-	data->img.p = mlx_xpm_file_to_image(data->mlx, "./img/Gora.xpm", &w, &h);
-	data->img.e = mlx_xpm_file_to_image(data->mlx, "./img/Water.xpm", &w, &h);
+	mlx = data->mlx;
+	data->img.w = mlx_xpm_file_to_image(mlx, "./../img/Wall.xpm", &w, &h);
+	if (data->img.w == NULL)
+		error("Invalid image file : Wall");
+	data->img.g = mlx_xpm_file_to_image(mlx, "./../img/Ground.xpm", &w, &h);
+	if (data->img.g == NULL)
+		error("Invalid image file : Ground");
+	data->img.c = mlx_xpm_file_to_image(mlx, "./../img/Apple.xpm", &w, &h);
+	if (data->img.w == NULL)
+		error("Invalid image file : Collect");
+	data->img.p = mlx_xpm_file_to_image(mlx, "./../img/Gora.xpm", &w, &h);
+	if (data->img.w == NULL)
+		error("Invalid image file : Character");
+	data->img.e = mlx_xpm_file_to_image(mlx, "./../img/Water.xpm", &w, &h);
+	if (data->img.w == NULL)
+		error("Invalid image file : Exit");
 }
 
 int	set_game_data(t_data *data, char key, int x, int y)
@@ -65,7 +77,7 @@ int	set_game_data(t_data *data, char key, int x, int y)
 	}
 	else if (key == 'E')
 		data->m_data.g_data.exit_cnt++;
-	return (0);
+	return (SUCCESS);
 }
 
 void	read_game(t_data *data)

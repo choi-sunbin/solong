@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunbchoi <sunbchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 19:22:04 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/01/03 19:55:21 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 21:20:59 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		return (0);
 	while (lst != 0 && f != 0)
 	{
-		if ((cur = ft_lstnew(f(lst->content))))
+		cur = ft_lstnew(f(lst->content));
+		if (!(cur))
 		{
 			if (ret_lst == 0)
 				ret_lst = cur;

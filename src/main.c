@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:55:00 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/24 19:05:12 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 20:43:01 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,5 @@ int	main(int argc, char *argv[])
 	mlx_hook(data->win, X_EVENT_KEY_EXIT, 0, &close_map, data);
 	print_draw_map(data);
 	mlx_loop(data->mlx);
-	return (0);
+	return (SUCCESS);
 }

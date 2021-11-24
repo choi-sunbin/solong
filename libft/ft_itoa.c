@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunbchoi <sunbchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 15:17:30 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/01/02 17:44:31 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 21:20:28 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	set_value(char *temp_str, char *str, int len, int sign)
 {
-	int loop;
+	int	loop;
 
 	loop = 0;
 	if (sign == 1)

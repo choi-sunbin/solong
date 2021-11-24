@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:32:10 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/24 18:48:33 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 20:42:22 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,12 @@ int	checking_empty_map(char **empty_map, t_data *data)
 	{
 		if (ft_strchr(empty_map[loop_y], '0') != NULL)
 		{
-			error("MAP CANT GO AREA EGIST\n");
 			print_shall_map(empty_map, data);
+			error("There are can't to go area that this map\n");
 		}
 		loop_y++;
 	}
+	return (SUCCESS);
 }
 
 int	check_area(t_data *data)
@@ -100,9 +101,8 @@ int	check_area(t_data *data)
 
 	cur = data->m_data.g_data.pos;
 	empty_map = create_empty_map(data);
-	print_shall_map(empty_map, data);
 	setting_empty_map(empty_map, cur.x, cur.y);
 	empty_map[cur.y][cur.x] = ITEM_KEY[3];
-	print_shall_map(empty_map, data);
 	checking_empty_map(empty_map, data);
+	return (SUCCESS);
 }

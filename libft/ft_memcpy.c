@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunbchoi <sunbchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 21:32:08 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/01/03 20:21:12 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 21:21:50 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t size)
 {
-	size_t loop;
+	size_t	loop;
 
 	if (dest == 0 && src == 0)
 		return (0);
 	loop = 0;
 	while (loop < size)
 	{
-		((unsigned char*)dest)[loop] = ((unsigned char*)src)[loop];
+		((unsigned char *)dest)[loop] = ((unsigned char *)src)[loop];
 		loop++;
 	}
 	return (dest);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunbchoi <sunbchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 21:28:35 by sunbchoi          #+#    #+#             */
-/*   Updated: 2020/12/23 21:29:34 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 21:21:24 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	*ft_memccpy(void *dest, const void *src, int check, size_t size)
 {
-	size_t loop;
+	size_t	loop;
 
 	loop = 0;
 	while (loop < size)
 	{
-		((unsigned char*)dest)[loop] = ((unsigned char*)src)[loop];
-		if (((unsigned char*)src)[loop] == (unsigned char)check)
-			return (&((unsigned char*)dest)[loop + 1]);
+		((unsigned char *)dest)[loop] = ((unsigned char *)src)[loop];
+		if (((unsigned char *)src)[loop] == (unsigned char)check)
+			return (&((unsigned char *)dest)[loop + 1]);
 		loop++;
 	}
 	return (0);

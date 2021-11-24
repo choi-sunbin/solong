@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunbchoi <sunbchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 22:08:58 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/01/04 11:53:06 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 21:25:04 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t dest_size)
 {
-	size_t src_size;
+	size_t	src_size;
 
 	if (dest == 0 || src == 0)
 		return (0);

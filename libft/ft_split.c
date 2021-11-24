@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunbchoi <sunbchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 17:34:13 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/01/04 11:50:51 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 21:22:16 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	**str_malloc_count(char *str, char check)
 		}
 		loop++;
 	}
-	words = (char**)ft_calloc(sizeof(char *), count + 1);
+	words = (char **)ft_calloc(sizeof(char *), count + 1);
 	return (words);
 }
 
@@ -88,9 +88,9 @@ char	**ft_split(char const *s, char c)
 
 	if (s == 0)
 		return (0);
-	words = str_malloc_count((char*)s, c);
+	words = str_malloc_count((char *)s, c);
 	if (words == 0)
 		return (0);
-	fill_words(words, (char*)s, c);
+	fill_words(words, (char *)s, c);
 	return (words);
 }

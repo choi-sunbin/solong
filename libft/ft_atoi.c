@@ -6,25 +6,25 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 21:24:23 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/22 14:44:50 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 21:17:57 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		is_space(char c)
+int	is_space(char c)
 {
-	if (c == ' ' || c == '\f' || c == '\n' ||
-		c == '\r' || c == '\t' || c == '\v')
+	if (c == ' ' || c == '\f' || c == '\n'
+		|| c == '\r' || c == '\t' || c == '\v')
 		return (1);
 	else
 		return (0);
 }
 
-int		ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
-	long long value;
-	long long sign;
+	long long	value;
+	long long	sign;
 
 	value = 0;
 	sign = 1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunbchoi <sunbchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 21:36:08 by sunbchoi          #+#    #+#             */
-/*   Updated: 2020/12/23 21:36:14 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 21:27:06 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	*ft_memset(void *dest, int fill_char, size_t size)
 {
-	size_t loop;
+	size_t	loop;
 
 	loop = 0;
 	while (loop < size)
 	{
-		((unsigned char*)dest)[loop] = (unsigned char)fill_char;
+		((unsigned char *)dest)[loop] = (unsigned char)fill_char;
 		loop++;
 	}
 	return (dest);

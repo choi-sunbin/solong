@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 21:27:51 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/22 15:36:07 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 21:28:50 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 
 void			*ft_bzero(void *dest, size_t size);
 void			*ft_memccpy(void *dest,
-							const void *src,
-							int check,
-							size_t size);
+					const void *src,
+					int check,
+					size_t size);
 void			*ft_memchr(void *dest, int find_char, size_t size);
 int				ft_memcmp(const void *dest, const void *src, size_t size);
 void			*ft_memcpy(void *dest, const void *src, size_t size);
@@ -60,7 +60,7 @@ void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 
-typedef struct	s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
@@ -76,7 +76,7 @@ void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 
 t_list			*ft_lstmap(t_list *lst,
-							void *(*f)(void *),
-							void (*del)(void *));
+					void *(*f)(void *),
+					void (*del)(void *));
 
 #endif
