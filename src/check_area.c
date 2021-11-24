@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:32:10 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/24 20:42:22 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 21:31:41 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ int	check_area(t_data *data)
 {
 	t_pos	cur;
 	char	**empty_map;
-	int		loop;
 
 	cur = data->m_data.g_data.pos;
 	empty_map = create_empty_map(data);

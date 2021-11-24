@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:14:16 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/24 20:43:14 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 21:31:57 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	walk_check(int x, int y, t_data *data)
 {
 	t_pos	pos;
 	char	check;
-	int		flag;
 
 	pos.x = data->m_data.g_data.pos.x + x;
 	pos.y = data->m_data.g_data.pos.y + y;
