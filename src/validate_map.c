@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 18:31:00 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/23 20:50:45 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 14:48:04 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,23 +85,6 @@ int	check_char(t_data *data)
 		loop_y++;
 	}
 	return (1);
-}
-
-int check_can_go(t_data *data)
-{
-	char	**cpy_map;
-	int		loop_y;
-	int		loop_x;
-
-	cpy_map = (char **)ft_calloc(sizeof(char), data->map_data.y_len + 1);
-	loop_y = 0;
-	while (loop_y < data->map_data.y_len)
-	{
-		cpy_map[loop_y] = ft_calloc(sizeof(char), data->map_data.x_len + 1);
-		ft_strcat(cpy_map[loop_y], data->map_data.map_mtrix[loop_y]);
-		loop_y++;
-	}
-	return (1)l
 }
 
 int	check_map(t_data *data)

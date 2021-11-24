@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:55:00 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/23 18:27:49 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 14:51:22 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ int	main(int argc, char *argv[])
 	check_input(argc, argv);
 	data = (t_data *)ft_calloc(sizeof(t_data), 1);
 	initialize_data(argv, data);
+	check_can_go(data);
 	data->win = mlx_new_window(data->mlx, data->map_data.x_len * 64, data->map_data.y_len * 64, "sunbchoi so_long");
 	mlx_hook(data->win, X_EVENT_KEY_PRESS, 0, &key_press, data);
-	mlx_hook(data->win, X_EVENT_KEY_EXIT, 0, &close_map, data);
+	mlx_hook(data->win, X_EVENT_KEY_EXIT, 0, &close_map, data); //-> 수정 필요
 	print_map(data);
 	mlx_loop(data->mlx);
 	return (0);

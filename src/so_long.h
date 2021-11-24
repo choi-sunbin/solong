@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 13:32:29 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/23 18:59:22 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 14:46:08 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,6 @@ int	error(char *msg);
 void initialize_data(char* argv[], t_data *data);
 int	check_map(t_data *data);
 int key_press(int keycode, t_data *data); // 어떤 키가 눌렸는지 판단하고,
-
+int check_can_go(t_data *data);
 
 #endif
