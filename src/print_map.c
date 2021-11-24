@@ -6,48 +6,59 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 17:55:10 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/23 14:54:35 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 18:42:28 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void *select_img(char cur, t_data *data)
+void	*select_img(char cur, t_data *data)
 {
-    if (cur == item_key[0])
-        return (data->img.wall);
-	else if (cur == item_key[1])
-		return (data->img.ground);
-	else if (cur == item_key[2])
-		return (data->img.item);
-	else if (cur == item_key[3])
-	    return (data->img.point);
-	else if (cur == item_key[4])
-		return (data->img.exit);
-    return (NULL);
+	if (cur == ITEM_KEY[0])
+		return (data->img.w);
+	else if (cur == ITEM_KEY[1])
+		return (data->img.g);
+	else if (cur == ITEM_KEY[2])
+		return (data->img.c);
+	else if (cur == ITEM_KEY[3])
+		return (data->img.p);
+	else if (cur == ITEM_KEY[4])
+		return (data->img.e);
+	return (NULL);
 }
 
-void print_map(t_data *data)
+void	print_draw_map(t_data *data)
 {
-	int     loop_x;
-	int     loop_y;
-	char    cur;
-    void    *img;
-	
-	loop_x = 0;
-	loop_y = 0;
-	while (loop_y < data->map_data.y_len)
+	int		lx;
+	int		ly;
+	void	*img;
+	void	*m;
+	void	*w;
+
+	lx = 0;
+	ly = 0;
+	m = data->mlx;
+	w = data->win;
+	while (ly < data->m_data.y_len)
 	{
-		loop_x = 0;
-		while (loop_x < data->map_data.x_len)
+		lx = 0;
+		while (lx < data->m_data.x_len)
 		{
-			cur = data->map_data.map_mtrix[loop_y][loop_x];
-			img = select_img(cur, data);
-            if (img == data->img.point || img == data->img.item)          
-			    mlx_put_image_to_window(data->mlx, data->win, data->img.ground, loop_x * 64, loop_y * 64);
-			mlx_put_image_to_window(data->mlx, data->win, img, loop_x * 64, loop_y * 64);
-			loop_x++;
+			img = select_img(data->m_data.mtx[ly][lx], data);
+			if (img == data->img.p || img == data->img.c)
+				mlx_put_image_to_window(m, w, data->img.g, lx * 64, ly * 64);
+			mlx_put_image_to_window(m, w, img, lx * 64, ly * 64);
+			lx++;
 		}
-		loop_y++;
+		ly++;
 	}
+}
+
+void	print_shall_map(char **map, t_data *data)
+{
+	int		loop_y;
+
+	loop_y = 0;
+	while (loop_y < data->m_data.y_len)
+		printf("[%s]\n", map[loop_y++]);
 }

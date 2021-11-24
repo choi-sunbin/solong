@@ -6,119 +6,103 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:32:10 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/24 15:45:29 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 18:44:15 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char    **create_empty_map(t_data *data)
+void	emptying_map(char **map, t_data *data)
+{
+	int		ly;
+	int		lx;
+
+	ly = 0;
+	while (ly < data->m_data.y_len)
+	{
+		lx = 0;
+		while (lx < data->m_data.x_len)
+		{
+			if (map[ly][lx] == ITEM_KEY[2] || map[ly][lx] == ITEM_KEY[3]
+			|| map[ly][lx] == ITEM_KEY[4])
+				map[ly][lx] = ITEM_KEY[1];
+			lx++;
+		}
+		ly++;
+	}
+}
+
+char	**create_empty_map(t_data *data)
 {
 	char	**cpy_map;
-	int		loop_y;
-	int		loop_x;
+	int		ly;
+	int		x_len;
 
-	cpy_map = (char **)ft_calloc(sizeof(char *), data->map_data.y_len + 1);
-	loop_y = 0;
-	while (loop_y < data->map_data.y_len)
+	cpy_map = (char **)ft_calloc(sizeof(char *), data->m_data.y_len + 1);
+	x_len = data->m_data.x_len;
+	ly = 0;
+	while (ly < data->m_data.y_len)
 	{
-		cpy_map[loop_y] = ft_calloc(sizeof(char), data->map_data.x_len + 1);
-		ft_memmove(cpy_map[loop_y], data->map_data.map_mtrix[loop_y], data->map_data.x_len);
-        cpy_map[loop_y][data->map_data.x_len] = 0;
-        loop_y++;
+		cpy_map[ly] = ft_calloc(sizeof(char), x_len + 1);
+		ft_memmove(cpy_map[ly], data->m_data.mtx[ly], x_len);
+		cpy_map[ly][data->m_data.x_len] = 0;
+		ly++;
 	}
-    loop_y = 0;
-	while (loop_y < data->map_data.y_len)
-	{
-		loop_x = 0;
-		while (loop_x < data->map_data.x_len)
-		{
-			if (cpy_map[loop_y][loop_x] == item_key[2] || cpy_map[loop_y][loop_x] == item_key[3] || cpy_map[loop_y][loop_x] == item_key[4] )
-				cpy_map[loop_y][loop_x] = item_key[1];
-			loop_x++;
-		}
-        loop_y++;
-	}
+	emptying_map(cpy_map, data);
 	return (cpy_map);
 }
 
-int setting_empty_map(char **empty_map, int x, int y)
+void	setting_empty_map(char **empty_map, int x, int y)
 {
-	int		loop;
+	int		add;
+	int		plan_loop;
 
-	loop = 0;
-	if (empty_map[y][x] == item_key[0] || empty_map[y][x] == item_key[2] || empty_map[y][x] == NULL)
-		return (0);
-    if (empty_map[y][x] == item_key[1])
+	if (empty_map[y][x] == ITEM_KEY[0] || empty_map[y][x] == ITEM_KEY[2])
+		return ;
+	if (empty_map[y][x] == ITEM_KEY[1])
 		empty_map[y][x] = 'C';
-	loop = 0;
-	while (empty_map[y][x + loop] != item_key[0])
+	plan_loop = 0;
+	while (plan_loop < 4)
 	{
-		if (empty_map[y][x + loop] == item_key[1])
-			setting_empty_map(empty_map, x + loop, y);
-		loop++;
+		if (plan_loop % 2 == 0)
+			add = -1;
+		else
+			add = 1;
+		if (plan_loop / 2 == 0 && (empty_map[y][x + add] == ITEM_KEY[1]))
+			setting_empty_map(empty_map, x + add, y);
+		else if (plan_loop / 2 == 1 && (empty_map[y + add][x] == ITEM_KEY[1]))
+			setting_empty_map(empty_map, x, y + add);
+		plan_loop++;
 	}
-    
-	loop = 0;
-	while (empty_map[y][x + loop] != item_key[0])
-	{
-		if (empty_map[y][x + loop] == item_key[1])
-			setting_empty_map(empty_map, x + loop, y);
-		loop--;
-	}
-	loop = 0;
-    while (empty_map[y + loop][x] != item_key[0])
-	{
-		if (empty_map[y + loop][x] == item_key[1])
-			setting_empty_map(empty_map, x, y + loop);
-		loop++;
-	}
-	loop = 0;
-	while (empty_map[y + loop][x] != item_key[0])
-	{
-		if (empty_map[y + loop][x] == item_key[1])
-			setting_empty_map(empty_map, x, y + loop);
-		loop--;
-	}
-    return (0);
 }
 
-int print_empty_map(char **empty_map, t_data *data)
+int	checking_empty_map(char **empty_map, t_data *data)
 {
-    int loop_y;
-    
-    loop_y = 0;
-    while (loop_y < data->map_data.y_len)
-        printf("[%s]\n",empty_map[loop_y++]);
+	int	loop_y;
+
+	loop_y = 0;
+	while (loop_y < data->m_data.y_len)
+	{
+		if (ft_strchr(empty_map[loop_y], '0') != NULL)
+		{
+			error("MAP CANT GO AREA EGIST\n");
+			print_shall_map(empty_map, data);
+		}
+		loop_y++;
+	}
 }
 
-int checking_empty_map(char **empty_map, t_data *data)
-{
-    int loop_y;
-    
-    loop_y = 0;
-    while (loop_y < data->map_data.y_len)
-    {
-        if (ft_strchr(empty_map[loop_y], '0') != NULL)
-        {    
-            error("MAP CANT GO AREA EGIST\n");
-            print_empty_map(empty_map, data);
-        }
-        loop_y++;
-    }
-}
-
-int check_can_go(t_data *data)
+int	check_area(t_data *data)
 {
 	t_pos	cur;
-    char    **empty_map;
+	char	**empty_map;
 	int		loop;
 
-	cur = data->map_data.game_data.pos_data;
-    empty_map = create_empty_map(data);
-	print_empty_map(empty_map, data);
-    setting_empty_map(empty_map, cur.x, cur.y);
-	empty_map[cur.y][cur.x] = item_key[3];
-	print_empty_map(empty_map, data);
-    checking_empty_map(empty_map, data);
+	cur = data->m_data.g_data.pos;
+	empty_map = create_empty_map(data);
+	print_shall_map(empty_map, data);
+	setting_empty_map(empty_map, cur.x, cur.y);
+	empty_map[cur.y][cur.x] = ITEM_KEY[3];
+	print_shall_map(empty_map, data);
+	checking_empty_map(empty_map, data);
 }

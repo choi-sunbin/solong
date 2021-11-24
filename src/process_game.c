@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:14:16 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/23 18:16:24 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 18:43:22 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	walk_process(int x, int y, t_data *data)
 {
 	t_pos	*cur;
 
-	cur = &data->map_data.game_data.pos_data;
-	data->map_data.map_mtrix[cur->y][cur->x] = '0';
-	data->map_data.map_mtrix[y][x] = 'P';
+	cur = &data->m_data.g_data.pos;
+	data->m_data.mtx[cur->y][cur->x] = '0';
+	data->m_data.mtx[y][x] = 'P';
 	cur->x = x;
 	cur->y = y;
 }
@@ -29,27 +29,27 @@ int	walk_check(int x, int y, t_data *data)
 	char	check;
 	int		flag;
 
-	pos.x = data->map_data.game_data.pos_data.x + x;
-	pos.y = data->map_data.game_data.pos_data.y + y;
-	check = data->map_data.map_mtrix[pos.y][pos.x];
-	if (check == item_key[0])
+	pos.x = data->m_data.g_data.pos.x + x;
+	pos.y = data->m_data.g_data.pos.y + y;
+	check = data->m_data.mtx[pos.y][pos.x];
+	if (check == ITEM_KEY[0])
 		return (0);
-	if (check == item_key[1])
+	if (check == ITEM_KEY[1])
 	{
 		walk_process(pos.x, pos.y, data);
 		return (1);
 	}
-	if (check == item_key[2])
+	if (check == ITEM_KEY[2])
 	{
 		walk_process(pos.x, pos.y, data);
-		data->map_data.game_data.item_cnt--;
+		data->m_data.g_data.item_cnt--;
 		return (1);
 	}
-	if (check == item_key[4] && data->map_data.game_data.item_cnt != 0)
+	if (check == ITEM_KEY[4] && data->m_data.g_data.item_cnt != 0)
 		return (0);
-	if (check == item_key[4] && data->map_data.game_data.item_cnt <= 0)
+	if (check == ITEM_KEY[4] && data->m_data.g_data.item_cnt <= 0)
 	{
-		printf("STEP CNT[%d]\n", data->map_data.game_data.step_cnt++);
+		printf("STEP CNT[%d]\n", data->m_data.g_data.step_cnt++);
 		exit(0);
 		return (0);
 	}
@@ -75,8 +75,8 @@ int	key_press(int keycode, t_data *data)
 	if (keycode == KEY_ESC)
 		exit(0);
 	flag = walk_check(x, y, data);
-	print_map(data);
+	print_draw_map(data);
 	if (flag != 0)
-		printf("STEP CNT[%d]\n", data->map_data.game_data.step_cnt++);
+		printf("STEP CNT[%d]\n", data->m_data.g_data.step_cnt++);
 	return (0);
 }
