@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 18:31:00 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/24 18:43:44 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 19:01:12 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,19 @@ int	check_walls(t_data *data)
 			while (data->m_data.mtx[loop_y][loop_x])
 			{
 				if (data->m_data.mtx[loop_y][loop_x] != '1')
-					error("Invalid map: top or bottom is not surrounded by wall");
+					error("Invalid map: top or bottom is not wall");
 				loop_x++;
 			}
 		}
 		if (data->m_data.mtx[loop_y][0] != '1'
 			|| data->m_data.mtx[loop_y][data->m_data.x_len - 1] != '1')
-			error("Invalid map: side wall is not surrounded by wall");
+			error("Invalid map: side is not wall");
 		loop_y++;
 	}
 	return (1);
 }
 
-int check_has(t_data *data)
+int	check_has(t_data *data)
 {
 	if (data->m_data.g_data.exit_cnt == 0)
 		error("Invalid map: No Exit");
@@ -69,7 +69,7 @@ int	check_char(t_data *data)
 {
 	int		loop_y;
 	int		loop_x;
-    char    check;
+	char	check;
 
 	loop_y = 0;
 	while (loop_y < data->m_data.y_len)

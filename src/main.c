@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:55:00 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/24 18:42:20 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 19:05:12 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	check_input(int argc, char *argv[])
 	return (1);
 }
 
-int close_map()
+int	close_map(void)
 {
 	exit(1);
 	return (1);

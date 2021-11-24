@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 18:10:49 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/24 18:42:30 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/24 19:03:17 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	read_map(char *argv[], t_data *data)
 	int		fd;
 	int		loop;
 	char	*line;
+	int		y_len;
 
 	data->m_data.y_len = 0;
 	fd = open(argv[1], O_RDONLY);
@@ -28,7 +29,8 @@ void	read_map(char *argv[], t_data *data)
 		free(line);
 	}
 	fd = open(argv[1], O_RDONLY);
-	data->m_data.mtx = (char **)ft_calloc(sizeof(char *), data->m_data.y_len + 1);
+	y_len = data->m_data.y_len;
+	data->m_data.mtx = (char **)ft_calloc(sizeof(char *), y_len + 1);
 	loop = 0;
 	while (ft_gnl(fd, &line))
 	{
@@ -47,8 +49,23 @@ void	read_img(t_data *data)
 	data->img.w = mlx_xpm_file_to_image(data->mlx, "./img/Wall.xpm", &w, &h);
 	data->img.g = mlx_xpm_file_to_image(data->mlx, "./img/Ground.xpm", &w, &h);
 	data->img.c = mlx_xpm_file_to_image(data->mlx, "./img/Apple.xpm", &w, &h);
-	data->img.p = mlx_xpm_file_to_image(data->mlx, "./img/Goraphaduck.xpm", &w, &h);
+	data->img.p = mlx_xpm_file_to_image(data->mlx, "./img/Gora.xpm", &w, &h);
 	data->img.e = mlx_xpm_file_to_image(data->mlx, "./img/Water.xpm", &w, &h);
+}
+
+int	set_game_data(t_data *data, char key, int x, int y)
+{
+	if (key == 'C')
+		data->m_data.g_data.item_cnt++;
+	else if (key == 'P')
+	{
+		data->m_data.g_data.point_cnt++;
+		data->m_data.g_data.pos.x = x;
+		data->m_data.g_data.pos.y = y;
+	}
+	else if (key == 'E')
+		data->m_data.g_data.exit_cnt++;
+	return (0);
 }
 
 void	read_game(t_data *data)
@@ -65,23 +82,7 @@ void	read_game(t_data *data)
 		while (loop_x < data->m_data.x_len)
 		{
 			key = data->m_data.mtx[loop_y][loop_x];
-			if (key == 'C')
-				data->m_data.g_data.item_cnt++;
-			else if (key == 'P')
-			{
-				data->m_data.g_data.point_cnt++;
-				data->m_data.g_data.pos.x = loop_x;
-				data->m_data.g_data.pos.y = loop_y;
-			}
-			else if (key == 'E')
-				data->m_data.g_data.exit_cnt++;
-			else if (key == '0' || key == '1')
-			{	
-				loop_x++;
-				continue ;
-			}
-			else
-				error("Wrong map Data\nPlease Check Map Data");
+			set_game_data(data, key, loop_x, loop_y);
 			loop_x++;
 		}
 		loop_y++;
