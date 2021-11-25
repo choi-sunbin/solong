@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:55:00 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/25 14:01:50 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/25 18:27:07 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	check_input(int argc, char *argv[])
 
 int	close_map(void)
 {
+	printf("The game is over now.\n");
 	exit(1);
 	return (1);
 }

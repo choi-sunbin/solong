@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 13:32:29 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/24 20:44:29 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/25 18:26:07 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
+# define KEY_DOWN 125
+# define KEY_UP 126
 # define KEY_ESC 53
 # define SUCCESS 1
 # define FAILURE 0
@@ -79,5 +83,5 @@ int		check_map(t_data *data);
 int		key_press(int keycode, t_data *data);
 void	print_draw_map(t_data *data);
 void	print_shall_map(char **map, t_data *data);
-
+int		close_map(void);
 #endif

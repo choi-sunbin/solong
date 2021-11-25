@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:14:16 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/24 21:31:57 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/25 18:26:53 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,16 @@ int	key_press(int keycode, t_data *data)
 
 	x = 0;
 	y = 0;
-	if (keycode == KEY_W)
+	if (keycode == KEY_W || keycode == KEY_UP)
 		y = -1;
-	else if (keycode == KEY_S)
+	else if (keycode == KEY_S || keycode == KEY_DOWN)
 		y = 1;
-	else if (keycode == KEY_A)
+	else if (keycode == KEY_A || keycode == KEY_LEFT)
 		x = -1;
-	else if (keycode == KEY_D)
+	else if (keycode == KEY_D || keycode == KEY_RIGHT)
 		x = 1;
 	if (keycode == KEY_ESC)
-		exit(0);
+		close_map();
 	flag = walk_check(x, y, data);
 	print_draw_map(data);
 	if (flag != 0)
