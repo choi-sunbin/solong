@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 18:10:49 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/24 20:42:49 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/25 17:17:14 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,19 @@ void	read_img(t_data *data)
 	void	*mlx;
 
 	mlx = data->mlx;
-	data->img.w = mlx_xpm_file_to_image(mlx, "./../img/Wall.xpm", &w, &h);
+	data->img.w = mlx_xpm_file_to_image(mlx, "./img/Wall.xpm", &w, &h);
 	if (data->img.w == NULL)
 		error("Invalid image file : Wall");
-	data->img.g = mlx_xpm_file_to_image(mlx, "./../img/Ground.xpm", &w, &h);
+	data->img.g = mlx_xpm_file_to_image(mlx, "./img/Ground.xpm", &w, &h);
 	if (data->img.g == NULL)
 		error("Invalid image file : Ground");
-	data->img.c = mlx_xpm_file_to_image(mlx, "./../img/Apple.xpm", &w, &h);
+	data->img.c = mlx_xpm_file_to_image(mlx, "./img/Apple.xpm", &w, &h);
 	if (data->img.w == NULL)
 		error("Invalid image file : Collect");
-	data->img.p = mlx_xpm_file_to_image(mlx, "./../img/Gora.xpm", &w, &h);
+	data->img.p = mlx_xpm_file_to_image(mlx, "./img/Gora.xpm", &w, &h);
 	if (data->img.w == NULL)
 		error("Invalid image file : Character");
-	data->img.e = mlx_xpm_file_to_image(mlx, "./../img/Water.xpm", &w, &h);
+	data->img.e = mlx_xpm_file_to_image(mlx, "./img/Water.xpm", &w, &h);
 	if (data->img.w == NULL)
 		error("Invalid image file : Exit");
 }

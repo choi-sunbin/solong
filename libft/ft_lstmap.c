@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 19:22:04 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/24 21:20:59 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/25 17:45:24 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	while (lst != 0 && f != 0)
 	{
 		cur = ft_lstnew(f(lst->content));
-		if (!(cur))
+		if (cur != NULL)
 		{
 			if (ret_lst == 0)
 				ret_lst = cur;

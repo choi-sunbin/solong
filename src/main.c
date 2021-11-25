@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:55:00 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/24 20:43:01 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/25 14:01:50 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	main(int argc, char *argv[])
 	check_input(argc, argv);
 	data = (t_data *)ft_calloc(sizeof(t_data), 1);
 	initialize_data(argv, data);
+	check_map(data);
 	check_area(data);
 	win_x = data->m_data.x_len * 64;
 	win_y = data->m_data.y_len * 64;

@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 01:02:14 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/24 21:19:51 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/25 18:09:29 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,20 @@ char	*fd_read(char **save_buf, int fd)
 	while (read_len > 0)
 	{
 		buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-		if (buf)
+		if (buf == NULL)
 		{
 			free(save_buf[fd]);
 			return (NULL);
 		}
 		read_len = read(fd, buf, BUFFER_SIZE);
 		if (read_len < 0)
-			exit(EXIT_FAILURE);
+		{
+			free(buf);
+			free(save_buf[fd]);
+			return (NULL);
+		}
 		buf[read_len] = 0;
 		save_buf[fd] = ft_strjoin_free(save_buf[fd], buf);
-		if (!(save_buf[fd]))
-			return (NULL);
 		if (new_line_check(save_buf[fd]))
 			break ;
 	}
@@ -90,7 +92,7 @@ int	gnl_make_line(char **save_buf, char **line, int fd)
 	if (save_buf[fd][loop] == '\n')
 	{
 		*line = new_line_copy(save_buf[fd]);
-		if (!(*line))
+		if (*line == NULL)
 		{
 			free(save_buf[fd]);
 			return (-1);

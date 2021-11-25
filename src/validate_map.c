@@ -6,7 +6,7 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 18:31:00 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/24 19:01:12 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/25 14:02:11 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	check_walls(t_data *data)
 	int		loop_x;
 
 	loop_y = 0;
-	while (loop_y < data->m_data.x_len)
+	while (loop_y < data->m_data.y_len)
 	{
 		loop_x = 0;
 		if (loop_y == 0 || loop_y == (data->m_data.y_len - 1))
@@ -41,13 +41,13 @@ int	check_walls(t_data *data)
 int	check_has(t_data *data)
 {
 	if (data->m_data.g_data.exit_cnt == 0)
-		error("Invalid map: No Exit");
+		error("Invalid map: This map has not Exit");
 	if (data->m_data.g_data.item_cnt == 0)
-		error("Invalid map: No Item");
+		error("Invalid map: This map has not Item");
 	if (data->m_data.g_data.point_cnt == 0)
-		error("Invalid map: No Character");
+		error("Invalid map: This map has not Character");
 	if (data->m_data.g_data.point_cnt > 1)
-		error("Invalid map: Too many Character");
+		error("Invalid map: This map has Too many Character");
 	return (1);
 }
 
@@ -59,7 +59,7 @@ int	check_ret(t_data *data)
 	while (loop_y < data->m_data.y_len)
 	{
 		if (data->m_data.x_len != (int)ft_strlen(data->m_data.mtx[loop_y]))
-			error("Invalid map: not a retangle");
+			error("Invalid map: This map is not a retangle");
 		loop_y++;
 	}
 	return (1);
@@ -79,7 +79,7 @@ int	check_char(t_data *data)
 		{
 			check = data->m_data.mtx[loop_y][loop_x];
 			if (ft_strchr(ITEM_KEY, check) == NULL)
-				error("Invalid map: unknown char");
+				error("Invalid map: This map has unknown char");
 			loop_x++;
 		}
 		loop_y++;

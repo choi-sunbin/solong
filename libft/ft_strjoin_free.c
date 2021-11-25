@@ -6,11 +6,22 @@
 /*   By: sunbchoi <sunbchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 01:01:55 by sunbchoi          #+#    #+#             */
-/*   Updated: 2021/11/24 21:22:43 by sunbchoi         ###   ########.fr       */
+/*   Updated: 2021/11/25 17:57:44 by sunbchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	str_len_set(char *s)
+{
+	int	len;
+
+	if (s == NULL)
+		len = 0;
+	else
+		len = ft_strlen(s);
+	return (len);
+}
 
 char	*ft_strjoin_free(char *s1, char *s2)
 {
@@ -21,8 +32,8 @@ char	*ft_strjoin_free(char *s1, char *s2)
 
 	if (s1 == 0 && s2 == 0)
 		return (0);
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
+	s1_len = str_len_set(s1);
+	s2_len = str_len_set(s2);
 	str = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
 	if (str == 0)
 		return (0);
